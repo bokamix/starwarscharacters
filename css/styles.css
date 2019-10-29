@@ -34,10 +34,12 @@ body {
     margin-bottom:20px;
     margin-top:20px;
     text-align: center;
+    transition: all .1s ease-in-out; 
 }
 
 .PosterWrapper:hover {
     transform: scale(1.10);
+    transition: all .1s ease; 
 }
 
 .PosterWrapper>img {
