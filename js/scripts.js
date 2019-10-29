@@ -1,7 +1,7 @@
 let persons = [];
 let SetFilmPersons = [];
-
-
+const StarWarsContainet = document.getElementById("StarWarsContainer");
+let element = document.getElementById("PostersWrapper");
 ////////////////Get all persons from API ///////////////////////
 axios
   .all([
@@ -16,7 +16,6 @@ axios
     axios.get("https://swapi.co/api/people/?page=9")
   ])
   .then(responseArr => {
-   
     persons = persons.concat(
       responseArr[0].data.results,
       responseArr[1].data.results,
@@ -29,7 +28,7 @@ axios
       responseArr[8].data.results
     );
 
-///////////// Create ID's for all persons /////////////////
+    ///////////// Create ID's for all persons /////////////////
 
     persons.forEach(function(person, number) {
       let personId = persons[number].url.replace(
@@ -44,45 +43,35 @@ axios
 ///////////////Find persons, and get information ////////////////////////////
 
 function findPerson() {
-    let SetFilmPersonsWork =[]
-    SetFilmPersons.forEach(function(person) {
-        let personId = person.replace(
-          "https://swapi.co/api/people/",
-          ""
-        );
-        personId = personId.replace("/", "");       
-      SetFilmPersonsWork.push(personId)         
-      });
-
-      SetFilmPersons =  SetFilmPersonsWork;
-      SetFilmPersonsWork = [];
-
-
-SetFilmPersons.forEach(function(personWork){
-  
-persons.forEach(function(person) {
-    if (personWork == person.id) {
-        SetFilmPersonsWork.push(person)
-    }
+  let SetFilmPersonsWork = [];
+  SetFilmPersons.forEach(function(person) {
+    let personId = person.replace("https://swapi.co/api/people/", "");
+    personId = personId.replace("/", "");
+    SetFilmPersonsWork.push(personId);
   });
 
-});
-SetFilmPersons = SetFilmPersonsWork;
-SetFilmPersonsWork = [];
+  SetFilmPersons = SetFilmPersonsWork;
+  SetFilmPersonsWork = [];
 
-
+  SetFilmPersons.forEach(function(personWork) {
+    persons.forEach(function(person) {
+      if (personWork == person.id) {
+        SetFilmPersonsWork.push(person);
+      }
+    });
+  });
+  SetFilmPersons = SetFilmPersonsWork;
+  SetFilmPersonsWork = [];
 }
-
 
 ////////////Click on poster ////////////////////////////
 
 function ClickOnPoster(posterNumber) {
   console.log(`To jest poster nr: ${posterNumber}`);
-  let element = document.getElementById("PostersWrapper");
-  element.classList.toggle("DisplayNone");
+ 
+  element.classList.toggle("OpacityNone");
   let TitleSite = document.getElementById("SiteTitle");
   TitleSite.innerHTML = `Wybrany Film Star Wars to: ${posterNumber}`;
-
 
   /////////////// Get info about choosen film //////////////////
   async function GetFromApi(FilmId) {
@@ -93,31 +82,44 @@ function ClickOnPoster(posterNumber) {
     try {
       const response = await axios.get(getUrl);
       SetFilmPersons = SetFilmPersons.concat(response.data.characters);
-      findPerson()
+      findPerson();
       console.log(SetFilmPersons);
-      console.log(response.data)
-//////////////////////Add things to chosen film card//////////////////////////
+      let film = response.data;
+      //////////////////////Add things to chosen film card//////////////////////////
 
+      const AppWrapper = document.getElementById("AppWrapper");
+      let AboutFilmWrapper = document.createElement("div");
+      AboutFilmWrapper.setAttribute("id", `AboutMovie`);
+      AboutFilmWrapper.classList.add("AboutMovie", "DisplayNone");
+ 
+      AppWrapper.prepend(AboutFilmWrapper);
+      const StarTitleEpisode = document.getElementById("StarTitleEpisode").innerHTML = `${film.release_date}`;
+      const StarTitle = document.getElementById("StarTitle").innerHTML = `${film.title}`;
+      const StarParagraph1 = document.getElementById("StarParagraph1").innerHTML = `${film.opening_crawl}`;
+      const StarParagraph2 = document.getElementById("StarParagraph2").innerHTML = `Film Director ${film.director}`;
+      const StarParagraph3 = document.getElementById("StarParagraph3").innerHTML = `Film Producer ${film.producer}`;
+      
+      setTimeout(function() {
+        TitleSite.classList.toggle("DisplayNone");
+        TitleSite.classList.toggle("OpacityNone");
+        element.classList.toggle("DisplayNone");
+        element.classList.toggle("OpacityNone");
+    
+        AboutFilmWrapper.classList.toggle("DisplayNone");
+        StarWarsContainet.classList.toggle("DisplayNone");
+       
+      }, 4000);
 
-
-
-
-
-
-
-
-
-//////////////////// END add things to chosen film card
-
+      //////////////////// END add things to chosen film card
     } catch (error) {
       console.error(error);
     }
   }
 
   GetFromApi(posterNumber);
-
+  document.body.style.overflow = "hiden";
   setTimeout(function() {
-    TitleSite.classList.toggle("DisplayNone");
+    TitleSite.classList.toggle("OpacityNone");
   }, 2000);
 }
 //////////////////////////////////////Click on Poster Ends////////////
