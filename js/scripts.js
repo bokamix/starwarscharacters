@@ -3,7 +3,7 @@ let SetFilmPersons = [];
 const StarWarsContainet = document.getElementById("StarWarsContainer");
 let PostWrapper = document.getElementById("PostersWrapper");
 let TitleSite = document.getElementById("SiteTitle");
-
+const CharactersContainer = document.querySelector(".CharactersContainer");
 /////////////// Create Characters Container //////////////////
 const CharactersWrapper = document.createElement("div");
 CharactersWrapper.setAttribute("id", `CharactersWrapper`);
@@ -12,7 +12,7 @@ CharactersWrapper.classList.add(
   "DisplayNone",
  
 );
-AppWrapper.prepend(CharactersWrapper);
+CharactersContainer.prepend(CharactersWrapper);
 
 ////////////////Get all persons from API ///////////////////////
 axios
@@ -131,9 +131,9 @@ function ClickOnPoster(posterNumber) {
         CharactersName.innerHTML = `Name: ${person.name}`;
         CharacterCard.prepend(CharactersName);
         /// Add another Info///
-        let CharactersDescription = document.createElement("h3");
-        CharactersDescription.innerHTML = `Birth Year: ${person.birth_year}`;
-        CharacterCard.append(CharactersDescription);
+        let CharactersDescription = document.createElement("p");
+     
+
 
         CharacterCard.setAttribute("id", `CharacterCard${num}`);
         CharacterCard.setAttribute("class", `CharacterCard`);      
@@ -149,7 +149,8 @@ function ClickOnPoster(posterNumber) {
       PostWrapper.classList.toggle("DisplayNone");
       PostWrapper.classList.toggle("OpacityNone");
       TitleSite.classList.toggle("OpacityNone");
-
+      StarWarsContainet.classList.toggle("DisplayNone");
+      CharactersContainer.classList.toggle("DisplayNone");
       setTimeout(function() {
         TitleSite.classList.toggle("DisplayNone");
         AboutFilmWrapper.classList.toggle("DisplayNone");
@@ -167,7 +168,7 @@ function ClickOnPoster(posterNumber) {
 
   GetFromApi(posterNumber);
   window.scrollTo(0, 0);
-  document.body.style.overflow = "hidden";
+  // document.body.style.overflow = "hidden";
   setTimeout(function() {
     TitleSite.classList.toggle("OpacityNone");
   }, 3000);

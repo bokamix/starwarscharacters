@@ -47,22 +47,24 @@ body {
 
 }
 
-.AboutMovie{
-    color:red;
-    width:45%;
-}
 
-.CharactersWrapper{
-  
-  top:150px;
-  right:150px;
-  width:150px;
+.AboutFilmWrapper{
   display: flex;
-  flex-wrap: wrap;
-  background: red;
+}
+.CharactersContainer{
+    width:500px;
+    position: absolute;
+    top:0;
+    right:0;
+}
+.CharactersWrapper{ 
+  display: flex;
+  flex-wrap: wrap;  
 }
 .CharacterCard{
-  width:50px;
+  width:150px;
+  background:black;
+
 }
 
 
