@@ -5,7 +5,7 @@
 
 body {
     background-image: url(../assets/img/galaxy.jpg);
-    background-size: cover;
+    
     color: white;
     font-family: 'Pathway Gothic One', sans-serif;
 }
@@ -52,11 +52,27 @@ body {
     width:45%;
 }
 
+.CharactersWrapper{
+  
+  top:150px;
+  right:150px;
+  width:150px;
+  display: flex;
+  flex-wrap: wrap;
+  background: red;
+}
+.CharacterCard{
+  width:50px;
+}
+
+
 .OpacityNone{
   opacity: 0;
   transform: scale(0);
   transition: .6s ease opacity,.6s ease transform;
 }
+
+
 .DisplayNone{
     display: none!important;
 }
@@ -74,15 +90,15 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    height: 800px;
+    height: 1200px;
     width: 65%;
     color: #feda4a;
     font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 300%;
+    font-size: 430%;
     font-weight: 600;
     letter-spacing: 6px;
     line-height: 150%;
-    perspective: 400px;
+    perspective: 600px;
     text-align: justify;
   }
   
