@@ -1,0 +1,21 @@
+{
+  "name": "star-wars-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bokamix/starwarscharacters.git"
+  },
+  "author": "Wojciech Janiak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bokamix/starwarscharacters/issues"
+  },
+  "homepage": "https://github.com/bokamix/starwarscharacters#readme"
+}
