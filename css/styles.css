@@ -46,10 +46,7 @@ body {
 .PosterWrapper>img {
     width:220px;
     margin:0 auto;
-    
-
 }
-
 
 .AboutFilmWrapper{
   display: flex;
@@ -60,6 +57,16 @@ body {
     top:30px;
     right:0;
 }
+
+@media only screen and (max-width: 1000px) {
+  .CharactersContainer{
+   width:100%;
+    position: absolute;
+    top:430px;
+    margin: 0 auto;
+    justify-content:center;
+}
+}
 .CharactersWrapper{ 
   display: flex;
   flex-wrap: wrap;  
@@ -69,14 +76,11 @@ body {
   background:black;
 
 }
-
-
 .OpacityNone{
   opacity: 0;
   transform: scale(0);
   transition: .6s ease opacity,.6s ease transform;
 }
-
 
 .DisplayNone{
     display: none!important;
