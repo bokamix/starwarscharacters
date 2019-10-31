@@ -57,7 +57,7 @@ body {
 .CharactersContainer{
     width:500px;
     position: absolute;
-    top:0;
+    top:30px;
     right:0;
 }
 .CharactersWrapper{ 

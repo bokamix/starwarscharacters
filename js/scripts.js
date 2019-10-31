@@ -1,6 +1,7 @@
 let persons = [];
 let SetFilmPersons = [];
 const StarWarsContainet = document.getElementById("StarWarsContainer");
+const FilmSiteWrapper = document.querySelector("#FilmSiteWrapper");
 let PostWrapper = document.getElementById("PostersWrapper");
 let TitleSite = document.getElementById("SiteTitle");
 const CharactersContainer = document.querySelector(".CharactersContainer");
@@ -151,6 +152,7 @@ function ClickOnPoster(posterNumber) {
       TitleSite.classList.toggle("OpacityNone");
       StarWarsContainet.classList.toggle("DisplayNone");
       CharactersContainer.classList.toggle("DisplayNone");
+      FilmSiteWrapper.classList.toggle("DisplayNone");
       setTimeout(function() {
         TitleSite.classList.toggle("DisplayNone");
         AboutFilmWrapper.classList.toggle("DisplayNone");
@@ -174,3 +176,18 @@ function ClickOnPoster(posterNumber) {
   }, 3000);
 }
 //////////////////////////////////////Click on Poster Ends////////////
+
+
+(function(window, location) {
+  history.replaceState(null, document.title, location.pathname+"#!/stealingyourhistory");
+  history.pushState(null, document.title, location.pathname);
+
+  window.addEventListener("popstate", function() {
+    if(location.hash === "#!/stealingyourhistory") {
+          history.replaceState(null, document.title, location.pathname);
+          setTimeout(function(){
+            location.replace("#");
+          },0);
+    }
+  }, false);
+}(window, location));
